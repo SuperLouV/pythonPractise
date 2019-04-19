@@ -17,13 +17,13 @@ def get_juqing_url_list():
            # 150
            # 'Cookie': 'bid=YTmCMpU7VFw; gr_user_id=e89f7f05-54dd-48b7-b016-1cbd195fef72; _vwo_uuid_v2=DD062FA23089F729B3D9D0279EE32C888|f8d13e41707d3b501e94e849c4eac737; ct=y; viewed="25963163"; ll="118090"; __yadk_uid=rfKjYEj2QgfuQ9hJljPMqjKQqNsBfvhS; douban-fav-remind=1; dbcl2="154361022:9D3tjbsTYkM"; push_noty_num=0; push_doumail_num=0; __utmv=30149280.15436; __utmz=30149280.1553344867.9.6.utmcsr=baidu|utmccn=(organic)|utmcmd=organic; __utmz=223695111.1553402455.9.6.utmcsr=douban.com|utmccn=(referral)|utmcmd=referral|utmcct=/; ck=khHp; __utmc=30149280; __utmc=223695111; ap_v=0,6.0; _pk_ref.100001.4cf6=%5B%22%22%2C%22%22%2C1553586985%2C%22https%3A%2F%2Fwww.douban.com%2F%22%5D; _pk_ses.100001.4cf6=*; __utma=30149280.78084383.1551104327.1553584746.1553586986.22; __utmb=30149280.0.10.1553586986; __utma=223695111.759236850.1551332018.1553584746.1553586986.20; __utmb=223695111.0.10.1553586986; _pk_id.100001.4cf6=e70bd7ef5bb896fe.1551332017.22.1553586995.1553584904.',
        }
-       base_url9 = "https://movie.douban.com/j/chart/top_list?type=11&interval_id=100%3A90&action=&start={}&limit=20"  # 100-90的影片   完成
-       base_url10 = "https://movie.douban.com/j/chart/top_list?type=11&interval_id=90%3A80&action=&start={}&limit=20"  # 完成
+       base_url1 = "https://movie.douban.com/j/chart/top_list?type=11&interval_id=100%3A90&action=&start={}&limit=20"  # 100-90的影片   完成
+       base_url2 = "https://movie.douban.com/j/chart/top_list?type=11&interval_id=90%3A80&action=&start={}&limit=20"  # 完成
        base_url6 = "https://movie.douban.com/j/chart/top_list?type=11&interval_id=80%3A70&action=&start={}&limit=20"  # 80-70的影片
        base_url7 = "https://movie.douban.com/j/chart/top_list?type=11&interval_id=70%3A60&action=&start={}&limit=20"
        base_url8 = "https://movie.douban.com/j/chart/top_list?type=11&interval_id=60%3A50&action=&start={}&limit=20"
-       base_url1 = "https://movie.douban.com/j/chart/top_list?type=11&interval_id=50%3A40&action=&start={}&limit=20"
-       base_url2 = "https://movie.douban.com/j/chart/top_list?type=11&interval_id=40%3A30&action=&start={}&limit=20"
+       base_url9 = "https://movie.douban.com/j/chart/top_list?type=11&interval_id=50%3A40&action=&start={}&limit=20"
+       base_url10 = "https://movie.douban.com/j/chart/top_list?type=11&interval_id=40%3A30&action=&start={}&limit=20"
        base_url3 = "https://movie.douban.com/j/chart/top_list?type=11&interval_id=30%3A20&action=&start={}&limit=20"
        base_url4= "https://movie.douban.com/j/chart/top_list?type=11&interval_id=20%3A10&action=&start={}&limit=20"
        base_url5 = "https://movie.douban.com/j/chart/top_list?type=11&interval_id=10%3A0&action=&start={}&limit=20"
@@ -35,7 +35,7 @@ def get_juqing_url_list():
        while num <= 580:  # num从0 意味着一共20部电影,一般都是每个段位600多电影  正常580
            try:
                i = 0
-               while i <= 4:  # 第2次设置为1  从80-0开始第二次 4.11  //4，17设置为9全部
+               while i <= 1:  # 第2次设置为1  从80-0开始第二次 4.11  //4，17设置为9全部
                    try:
                        time.sleep(random.random() * 3)  # 设置时间间隔休眠
                        # //////////////////////////////////////////////////////////////////构建代理

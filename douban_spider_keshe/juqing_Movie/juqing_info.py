@@ -103,7 +103,7 @@ for final_url in get_juqing_url_list():
 
             # ..........................................
             # 开始存储CSV
-            with open('doubanjuqing500.csv', 'a', encoding='utf-8', newline='') as csvfile:
+            with open('doubanjuqing1080.csv', 'a', encoding='utf-8', newline='') as csvfile:
                 writer = csv.writer(csvfile)
                 # writer.writerow(['电影名称', '导演', '编剧','主演1','主演2','主演3','电影类型','片长','年份','国家和地区','语言'])
                 writer.writerow(juqinglist)
