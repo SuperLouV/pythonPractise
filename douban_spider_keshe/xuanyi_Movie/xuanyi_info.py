@@ -9,9 +9,9 @@ import pandas as pd
 from lxml import etree
 import requests
 
-from douban_spider_keshe.kehuan_Movie.kehuan_url import get_kehuan_url_list
+from douban_spider_keshe.xuanyi_Movie.xuanyi_url import get_xuanyi_url_list
 
-for final_url in get_kehuan_url_list():
+for final_url in get_xuanyi_url_list():
     try:
         # print(final_url)
         time.sleep(random.random() * 3)  # 设置时间间隔休眠
@@ -54,59 +54,59 @@ for final_url in get_kehuan_url_list():
         # print("可以访问网页")
         # print(html_str)              # 检验是否可访问网页
         html = etree.HTML(html_str)
-        # kehuan_info = html.xpath('/html//div[@class="info"]/span/a')
-        kehuan_director = html.xpath('//span[@class="attrs"]/a[1]/text()')
+        # xuanyi_info = html.xpath('/html//div[@class="info"]/span/a')
+        xuanyi_director = html.xpath('//span[@class="attrs"]/a[1]/text()')
         try:
-            kehuan_director_director = kehuan_director[0]
-            kehuan_director_screenwriter = kehuan_director[1]
-            kehuan_type = html.xpath('//span[@property="v:genre"]/text()')
-            kehuan_runtime_list = html.xpath('//span[@property="v:runtime"]/text()')
-            kehuan_runtime = kehuan_runtime_list[0]
-            kehuan_year = html.xpath('//span[@class="year"]/text()')
-            year = kehuan_year[0].strip('(').strip(')')
-            kehuan_name_list = html.xpath('//span[@property="v:itemreviewed"]/text()')
-            kehuan_name = kehuan_name_list[0]
-            kehuan_info_list = html.xpath('//div[@id="info"]//text()')  # 倒数第20位是地区
+            xuanyi_director_director = xuanyi_director[0]
+            xuanyi_director_screenwriter = xuanyi_director[1]
+            xuanyi_type = html.xpath('//span[@property="v:genre"]/text()')
+            xuanyi_runtime_list = html.xpath('//span[@property="v:runtime"]/text()')
+            xuanyi_runtime = xuanyi_runtime_list[0]
+            xuanyi_year = html.xpath('//span[@class="year"]/text()')
+            year = xuanyi_year[0].strip('(').strip(')')
+            xuanyi_name_list = html.xpath('//span[@property="v:itemreviewed"]/text()')
+            xuanyi_name = xuanyi_name_list[0]
+            xuanyi_info_list = html.xpath('//div[@id="info"]//text()')  # 倒数第20位是地区
             score = html.xpath('//div[@class="rating_self clearfix"]/strong/text()')  # 分数
-            kehuan_score = score[0]
-            # kehuan_area=kehuan_area_list[-20]
-            area_num = kehuan_info_list.index('制片国家/地区:')
-            actor_num = kehuan_info_list.index('主演')
-            language_num = kehuan_info_list.index('语言:')
-            kehuan_actor1 = kehuan_info_list[actor_num + 2]  # 主演1位置
-            kehuan_actor2 = kehuan_info_list[actor_num + 4]  # 主演2位置
-            kehuan_actor3 = kehuan_info_list[actor_num + 6]  # 主演3位置
-            kehuan_language = kehuan_info_list[language_num + 1]  # 语言位置
+            xuanyi_score = score[0]
+            # xuanyi_area=xuanyi_area_list[-20]
+            area_num = xuanyi_info_list.index('制片国家/地区:')
+            actor_num = xuanyi_info_list.index('主演')
+            language_num = xuanyi_info_list.index('语言:')
+            xuanyi_actor1 = xuanyi_info_list[actor_num + 2]  # 主演1位置
+            xuanyi_actor2 = xuanyi_info_list[actor_num + 4]  # 主演2位置
+            xuanyi_actor3 = xuanyi_info_list[actor_num + 6]  # 主演3位置
+            xuanyi_language = xuanyi_info_list[language_num + 1]  # 语言位置
             area = area_num + 1
-            kehuan_area = kehuan_info_list[area]  # 地区位置
-            area = kehuan_area.strip(' ')
+            xuanyi_area = xuanyi_info_list[area]  # 地区位置
+            area = xuanyi_area.strip(' ')
             # // span[ @ property = "v:genre"]
             print("-" * 100)
-            # print(len(kehuan_info))
-            print(kehuan_director)
-            # print(kehuan_info_list)
-            print("电影名称：", kehuan_name)
-            print("导演为:", kehuan_director_director)
-            print("编剧为：", kehuan_director_screenwriter)
-            print("主演为：", kehuan_actor1, kehuan_actor2, kehuan_actor3)
-            print("电影类型：", kehuan_type)
-            print("片长：", kehuan_runtime)
+            # print(len(xuanyi_info))
+            print(xuanyi_director)
+            # print(xuanyi_info_list)
+            print("电影名称：", xuanyi_name)
+            print("导演为:", xuanyi_director_director)
+            print("编剧为：", xuanyi_director_screenwriter)
+            print("主演为：", xuanyi_actor1, xuanyi_actor2, xuanyi_actor3)
+            print("电影类型：", xuanyi_type)
+            print("片长：", xuanyi_runtime)
             print("年份:", year)
             print("国家和地区：", area)
-            print("语言：", kehuan_language)
-            print("分数:", kehuan_score)
-            kehuanlist = [kehuan_name, '', kehuan_director_director, '', kehuan_director_screenwriter, '',
-                          kehuan_actor1,
-                          '', kehuan_actor2, '', kehuan_actor3, kehuan_type, kehuan_runtime, year, area,
-                          kehuan_language,
-                          kehuan_score]
+            print("语言：", xuanyi_language)
+            print("分数:", xuanyi_score)
+            xuanyilist = [xuanyi_name, '', xuanyi_director_director, '', xuanyi_director_screenwriter, '',
+                          xuanyi_actor1,
+                          '', xuanyi_actor2, '', xuanyi_actor3, xuanyi_type, xuanyi_runtime, year, area,
+                          xuanyi_language,
+                          xuanyi_score]
 
             # ..........................................
             # 开始存储CSV
-            with open('doubankehuan1000.csv', 'a', encoding='utf-8', newline='') as csvfile:
+            with open('doubanxuanyi1000.csv', 'a', encoding='utf-8', newline='') as csvfile:
                 writer = csv.writer(csvfile)
                 # writer.writerow(['电影名称', '导演', '编剧','主演1','主演2','主演3','电影类型','片长','年份','国家和地区','语言'])
-                writer.writerow(kehuanlist)
+                writer.writerow(xuanyilist)
         except:
             print("本影片信息丢失")  # 判断影片信息是否存在
             continue
