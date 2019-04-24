@@ -19,21 +19,20 @@ for final_url in get_juqing_url_list():
     # print(html_str)              # 检验是否可访问网页
     html = etree.HTML(html_str)
     # juqing_info = html.xpath('/html//div[@class="info"]/span/a')
-    juqing_director=html.xpath('//span[@class="attrs"]/a[1]/text()')
+    juqing_director = html.xpath('//span[@class="attrs"]/a[1]/text()')
     juqing_director_director = juqing_director[0]
     juqing_director_screenwriter = juqing_director[1]
     # // span[ @ property = "v:genre"]
-    print("-"*50)
+    print("-" * 50)
     print(type(juqing_director))
     # print(len(juqing_info))
     print(juqing_director)
-    print("导演为:",juqing_director_director)
-    print("编剧为：",juqing_director_screenwriter)
-
+    print("导演为:", juqing_director_director)
+    print("编剧为：", juqing_director_screenwriter)
 
     # a=json.loads(juqing_info[0])
     # print("数组内存储形式为：",type(a))
     # print(type(a))
-    #检验获取到了juqing的第二段链接info对象
+    # 检验获取到了juqing的第二段链接info对象
     # final_juqing = json.loads(juqing_info)
     # print(final_url)

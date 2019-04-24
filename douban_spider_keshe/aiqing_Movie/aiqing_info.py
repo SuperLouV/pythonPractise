@@ -1,6 +1,6 @@
 import csv
 import json
-#遍历爬取所有影片信息
+# 遍历爬取所有影片信息
 import random
 import time
 import urllib
@@ -112,8 +112,3 @@ for final_url in get_aiqing_url_list():
             continue
     except:
         continue
-
-
-
-
-
