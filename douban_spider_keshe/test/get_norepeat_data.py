@@ -1,4 +1,4 @@
-#删除之前的空格
+#获取无重复信息的数据
 import pandas as pd
 import numpy as np
 # df=pd.read_csv(r'D:\pythonPractise\douban_spider_keshe\data_analyze\yinyue_1.csv',encoding='utf-8',header=None,names=['a','c','e','g','i','k','l','m','o','p','q'])

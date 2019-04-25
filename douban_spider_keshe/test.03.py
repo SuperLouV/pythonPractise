@@ -1,14 +1,3 @@
-import requests
-from bs4 import BeautifulSoup
-import html5lib
-headers = {
-"user-agent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36",
-}
-proxies ={
-    "http":'http://122.193.14.102:80',
-    "https":"http://120.203.18.33:8123"
-}
-r = requests.get('http://www.ip.cn',headers=headers,proxies=proxies)
-content = r.text
-ip=re.search(r'code.(.*?)..code',content)
-print (ip.group(1))
+s=[1,1,1,2,2,3,3,4,6,9,4,32,8,879,324,132,44,6,5,6,4,31,1,5,]
+s2=list(set(s))
+print(s2)

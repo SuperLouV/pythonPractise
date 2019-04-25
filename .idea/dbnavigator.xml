@@ -25,7 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="e11f615b-be51-4298-b494-2dc99633faa6">
-        <schema name="doubanmovie" object-types="view, table" />
+        <schema name="doubanmovie" object-types="table, view" />
       </connection>
     </loaded-nodes>
   </component>
