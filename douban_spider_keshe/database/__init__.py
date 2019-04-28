@@ -27,12 +27,12 @@
 import pymysql
 
 # 打开数据库连接（ip/数据库用户名/登录密码/数据库名）
-db = pymysql.connect("localhost", "root", "root", "test")
+db = pymysql.connect("localhost", "root", "root", "doubanmovie")
 # 使用 cursor() 方法创建一个游标对象 cursor
 cursor = db.cursor()
 
 # SQL 查询语句
-sql = "SELECT * FROM t1"
+sql = "SELECT * FROM all_1"
 
 try:
     # 执行SQL语句

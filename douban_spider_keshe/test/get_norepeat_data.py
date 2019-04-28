@@ -30,7 +30,7 @@ country_list2=[]
 for str in country_list:
     try:
         if sign in str:
-            location = country_list[i].index('/')
+            location = str.index('/')
             str = str[0:location]
             print("有",str)
             # location = country_list[i].index('/')
@@ -44,8 +44,9 @@ for str in country_list:
             country_list2.append(str)
     except:
         continue
-country_list2=list(set(country_list2))
+country_list2=list(set(country_list2))               #去重
 print("全部国家",country_list2)
+print(len(country_list2))
 # language_list=df['语言'].tolist()
 # print(language_list)
 # print(type(language_list[2]))

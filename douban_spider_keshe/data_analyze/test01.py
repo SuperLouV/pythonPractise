@@ -18,7 +18,7 @@ print(type(df))
 a=df.loc[df['地区'] == '美国']    #目前仅仅是搜索美国，之后添加条件美国/英国
 country_list=df['地区'].tolist()
 print(country_list)
-
+i=0
 sign = '/'
 print(type(sign))
 
@@ -36,9 +36,9 @@ for str in country_list:
             # location = country_list[i].index('/')
             # country_list[i] = str[0:location]
             country_list2.append(str)
-            # i += 1
+            i += 1
         else:
-            # i += 1
+            i += 1
             # country_list2[j].append(country_list[i])
             print("没有/",str)
             country_list2.append(str)
