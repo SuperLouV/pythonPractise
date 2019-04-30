@@ -43,26 +43,31 @@ for str in country_list:
 country_list2=list(set(country_list2))               #去重
 print("全部国家",country_list2)                 #输出全部国家在一个数组里
 print(len(country_list2))         #国家数量，但是包含了重复名称
-#开始遍历国家，求出每个国家的影片数量
-# for country in country_list2:
-#     print(50*'%')
-#     print(country)
-#     a = df.loc[df['地区'] == country]
-#     country_score = df['分数'].tolist()
-#     # country_score=country_score.mean
-#     print(country_score)
-#     print(50*'%')
-country_movie_number=[]
+
+country_movie_score=[]
+
+#计算每个国家平均分
+def averagenum(num):
+    nsum = 0
+    for i in range(len(num)):
+        nsum += num[i]
+    return nsum / len(num)
+
+
 for country in country_list2:
     df = df[df['地区'].notnull()]
     print(country)
-    df_area = df[df['地区'].str.contains(country)]
-    print(df_area.shape[0])
-    number=df_area.shape[0]
-    country_movie_number.append(number)
-#     # print(df_area)
-print(country_movie_number)
-country_number=dict(zip(country_list2,country_movie_number))
-print(country_number)
+    df_area = df[df['地区'].str.contains(country)]   #只要国家名称中包含‘地区’就算进数量。如‘美国 ’，‘ 美国’均为‘美国’
+    print(df_area)      #每个国家对应的电影信息
+    score=df_area['分数'].tolist()
+    print(score)
+    print(averagenum(score))
+    country_movie_score.append(averagenum(score))#平均分列表
+
+
+country_average_score=dict(zip(country_list2,country_movie_score))          #组成国家：分数的字典
+print(country_movie_score)
+print(country_average_score)  #这个是字典
+
 
 

@@ -1,9 +1,5 @@
 
-import csv
+a=[ '香港', '美国', 'USA', '美国', '美国', '美国',  '中国台湾',  '中国',  '美国', '中国大陆', '台湾']
+for i in a:
 
-with open('data.csv', 'w',newline='') as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerow(['id', 'name', 'age'])
-    writer.writerow(['10001', 'Mike', 20])
-    writer.writerow(['10002', 'Bob', 22])
-    writer.writerow(['10003', 'Jordan', 21])
+    print(i)

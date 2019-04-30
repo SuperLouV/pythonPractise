@@ -62,7 +62,7 @@ for country in country_list2:
     country_movie_number.append(number)
 #     # print(df_area)
 print(country_movie_number)
-country_number=dict(zip(country_list2,country_movie_number))
+country_number=dict(zip(country_list2,country_movie_number))          #组成国家：数量的字典
 print(country_number)
 
 
