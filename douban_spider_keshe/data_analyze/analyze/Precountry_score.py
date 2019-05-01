@@ -5,7 +5,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-
+import pymysql
 
 df=pd.read_csv(r'D:\pythonPractise\douban_spider_keshe\data_analyze\all_2.csv',encoding='utf-8',names=['编号','名字','导演','编剧','主演一','主演二','主演三','类型','时长','年份','地区','语言','分数'])
 
@@ -66,9 +66,29 @@ for country in country_list2:
 
 
 country_average_score=dict(zip(country_list2,country_movie_score))          #组成国家：分数的字典
-print(country_movie_score)
-print(country_average_score)  #这个是字典
-pd.DataFrame(country_average_score,index = [0]).to_csv('country_average_score.csv')
+print(country_movie_score)            #电影平均分的列表
 
+print(type(country_movie_score[2]))
+# for i in range(len(country_list2)):
+#     print(i)
+#     print(country_movie_score[i])
+#     print(str(country_movie_score[i]))
+#     print(type(country_movie_score[i]))
+# print(country_average_score)  #这个是字典
+
+#############################################存入数据库
+
+#
+# conn = pymysql.connect("localhost", "root", "root", "doubanmovie")
+# cursor = conn.cursor()
+#
+# for i in range(len(country_list2)):
+#     sql_insert = "insert into director_score(director,score) values(a[i],5.6)"
+#     sql_insert1 = "insert into country_score(country,score)values('" + country_list2[i] + "','" + str(country_movie_score[i]) + "' )"
+#     cursor.execute(sql_insert1)
+#     print('插入')
+#     conn.commit()
+# cursor.close()
+# conn.close()
 
 

@@ -1,11 +1,11 @@
 #4.28日可以统计特征信息，如国家电影数量
-#每个国家的电影数量已经统计完成
+#每个国家的电影数量已经统计完成,存入MYSQL
 import csv
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-
+import pymysql
 
 df=pd.read_csv(r'D:\pythonPractise\douban_spider_keshe\data_analyze\all_2.csv',encoding='utf-8',names=['编号','名字','导演','编剧','主演一','主演二','主演三','类型','时长','年份','地区','语言','分数'])
 
@@ -22,22 +22,22 @@ print(country_list[0])
 # for i in country_list:
 #     print(type(str))
 country_list2=[]
-for str in country_list:
+for str1 in country_list:
     try:
-        if sign in str:
-            location = str.index('/')
+        if sign in str1:
+            location = str1.index('/')
             location = location-1
-            str = str[0:location]
-            print("有",str)
+            str1 = str1[0:location]
+            print("有",str1)
             # location = country_list[i].index('/')
-            # country_list[i] = str[0:location]
-            country_list2.append(str)
+            # country_list[i] = str1[0:location]
+            country_list2.append(str1)
             # i += 1
         else:
             # i += 1
             # country_list2[j].append(country_list[i])
-            print("没有/",str)
-            country_list2.append(str)
+            print("没有/",str1)
+            country_list2.append(str1)
     except:
         continue
 country_list2=list(set(country_list2))               #去重
@@ -63,6 +63,20 @@ for country in country_list2:
 #     # print(df_area)
 print(country_movie_number)
 country_number=dict(zip(country_list2,country_movie_number))          #组成国家：数量的字典
-print(country_number)
+# print(country_number)
 
+
+##########################################
+conn = pymysql.connect("localhost", "root", "root", "doubanmovie")
+cursor = conn.cursor()
+
+for i in range(len(country_list2)):
+    sql_insert1 = "insert into country_number(country)values(%s)" % (country_list2[i])
+    sql_insert = "insert into country_number(country,number)values('" + country_list2[i] + "','" + str(country_movie_number[i]) + "')"
+    cursor.execute(sql_insert)
+    print(sql_insert)
+    print('插入')
+    conn.commit()
+cursor.close()
+conn.close()
 

@@ -1,32 +1,24 @@
 # coding:utf-8
-import MySQLdb
+import pymysql
 
-conn = MySQLdb.connect(host='127.0.0.1',
-                       port=3306,
-                       charset='utf8',
-                       passwd='123456',
-                       user='root',
-                       db='immo'
-                       )
-cursor = conn.cursor()
-sql_insert = "insert into user(userid,username) values(16,'name19')"
-sql_update = "update user set username='name7' where userid=7"
-sql_delete = "delete from user where usrid<5"
-try:
-    cursor.execute(sql_insert)
-    print
-    cursor.rowcount  # 执行过inset改变了几行
-    cursor.execute(sql_delete)
-    print
-    cursor.rowcount  # 同上
-    cursor.execute(sql_update)
-    print
-    cursor.rowcount
-    conn.commit()
-except Exception as e:
-    print
-    e
-    conn.rollback()  # 回滚事务
+a=['zhao','qian','sun']
+b=[5.6,4.4,7.6]
+for i in range(len(b)):
+    sql_insert1 = "insert into director_score(director,score)values('" + a[i] + "','" + str(b[i]) + "')"
+    print(sql_insert1)
 
-cursor.close()
-conn.close()
+
+
+
+
+# conn = pymysql.connect("localhost", "root", "root", "doubanmovie")
+# cursor = conn.cursor()
+#
+# for i in range(len(a)):
+#     sql_insert = "insert into director_score(director,score) values(a[i],5.6)"
+#     sql_insert1 = "insert into director_score(director,score)values('" + a[i] + "','" + str(b[i]) + "')"
+#     cursor.execute(sql_insert1)
+#     print('插入')
+#     conn.commit()
+# cursor.close()
+# conn.close()
