@@ -44,7 +44,7 @@ country_list2=list(set(country_list2))               #去重
 print("全部国家",country_list2)                 #输出全部国家在一个数组里
 print(len(country_list2))         #国家数量，但是包含了重复名称
 
-country_movie_score=[]
+country_movie_score = []
 
 #计算每个国家平均分
 def averagenum(num):
@@ -68,6 +68,7 @@ for country in country_list2:
 country_average_score=dict(zip(country_list2,country_movie_score))          #组成国家：分数的字典
 print(country_movie_score)
 print(country_average_score)  #这个是字典
+pd.DataFrame(country_average_score,index = [0]).to_csv('country_average_score.csv')
 
 
 
