@@ -1,5 +1,6 @@
 #4.28日可以统计特征信息，如国家电影数量
 #每个国家的电影数量已经统计完成,存入MYSQL
+#5.3数据存入数据库country_number表
 import csv
 import matplotlib
 import matplotlib.pyplot as plt
