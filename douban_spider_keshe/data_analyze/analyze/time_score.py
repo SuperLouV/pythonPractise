@@ -25,17 +25,38 @@ time_movie_score = []
 time_movie_number=[]
 sign1=':'
 sign2='分钟'
-timelong=[]
+sign3='约220'
+timelong=[]  #int类型
+timelong_str=[] #字符型
 for timelong1 in time_list:                      #提取时长数字
     location1 = timelong1.index(sign2)
     timelong2 = timelong1[:location1]
     if sign1 in timelong2:
         location2=timelong1.index(sign1)+1
-        timelong3 = timelong2[location2:]
+        timelong3 = timelong2[location2:].strip()
+        timelong4=int(timelong3)    #str转为int
     else:
-        timelong3 = timelong2
+        timelong3 = timelong2.strip()
+        timelong4 = int(timelong3)           #str转为int
+    timelong_str.append(timelong4)
     timelong.append(timelong3)
+
 print(timelong)
+print(max(timelong_str))          #最大数
+print(min(timelong_str))               #最小数
+print(len(timelong))
+time_dict=dict(zip(time_list,timelong))
+print(time_dict)
+
+serise=df['时长']
+print(serise)
+new_serise=serise.replace(time_dict)
+print(new_serise)
+df['时长']=new_serise
+print(df)
+df.to_csv("change_time.csv")   #现存入一个CSV
+
+
 # 计算平均分
 # def averagenum(num):
 #     nsum = 0
@@ -43,7 +64,7 @@ print(timelong)
 #         nsum += num[i]
 #     return nsum / len(num)
 
-#
+
 # for time in time_list:
 #     df = df[df['时长'].notnull()]
 #     print(time)
@@ -61,8 +82,9 @@ print(timelong)
 # print(time_movie_number) #时长的电影部数
 
 
-#############################################存入数据库
 
+############################################存入数据库
+#
 # conn = pymysql.connect("localhost", "root", "root", "doubanmovie")
 # cursor = conn.cursor()
 # for i in range(len(time_list)):

@@ -20,8 +20,7 @@ print(type(sign))
 
 print(type(country_list[0]))
 print(country_list[0])
-# for i in country_list:
-#     print(type(str))
+
 country_list2=[]
 for str1 in country_list:
     try:
