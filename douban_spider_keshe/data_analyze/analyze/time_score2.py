@@ -142,35 +142,33 @@ for serise in time_list:
     elif 180 < serise :
         serise = 8.27823
         new_time_list.append(serise)
-    # else:
-        # print('88888888888888888888888888888',serise)
-        # print(type(serise))
+
 print(len(new_time_list))
 # print(new_time_list)
 new_time_list=pd.DataFrame(new_time_list)
 # print(new_time_list)
 df['时长'] = new_time_list
-df.to_csv("change_time2.csv")   #现存入一个CSV
+df.to_csv("D:\pythonPractise\douban_spider_keshe\data_analyze\change_CSV\change_time.csv")   #现存入一个CSV
 
 #############################################存入数据库
-#
-# conn = pymysql.connect("localhost", "root", "root", "doubanmovie")
-# cursor = conn.cursor()
-# for i in range(len(time_movie_number)):
-#     # sql_insert1 = "insert into time_score(time)values(%s)" % (time_list2[i])
-#     sql_insert = "insert into time_score(time,score,movie_number)values('" + time_divided[i]+ "'," + str(time_movie_score[i]) + "," + str(time_movie_number[i]) + ")"
-#     # sql_insert = 'select * from time_score'
-#     print(sql_insert)
-#     try:
-#         # 执行sql语句
-#         cursor.execute(sql_insert)
-#         # 提交到数据库执行
-#         print('插入')
-#         conn.commit()
-#     except:
-#         continue
-#         # 发生错误时回滚
-#         # conn.rollback()
-#
-# cursor.close()
-# conn.close()
+
+conn = pymysql.connect("localhost", "root", "root", "doubanmovie")
+cursor = conn.cursor()
+for i in range(len(time_movie_number)):
+    # sql_insert1 = "insert into time_score(time)values(%s)" % (time_list2[i])
+    sql_insert = "insert into time_score(time,score,movie_number)values('" + time_divided[i]+ "'," + str(time_movie_score[i]) + "," + str(time_movie_number[i]) + ")"
+    # sql_insert = 'select * from time_score'
+    print(sql_insert)
+    try:
+        # 执行sql语句
+        cursor.execute(sql_insert)
+        # 提交到数据库执行
+        print('插入')
+        conn.commit()
+    except:
+        continue
+        # 发生错误时回滚
+        # conn.rollback()
+
+cursor.close()
+conn.close()

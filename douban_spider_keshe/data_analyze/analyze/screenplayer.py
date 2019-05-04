@@ -44,28 +44,37 @@ for screenplayer in screenplayer_list:
     print(number)
 print(screenplayer_movie_score)    #电影平均分的列表
 print(screenplayer_movie_number) #编剧的电影部数
-# screenplayer_average_score=dict(zip(screenplayer_list2,screenplayer_movie_score))          #组成国家：分数的字典
+screenplayer_average_score=dict(zip(screenplayer_list,screenplayer_movie_score))          #组成国家：分数的字典
 
+def change_screenplayer():
+    df1 = pd.read_csv(r'D:\pythonPractise\douban_spider_keshe\data_analyze\change_CSV\change_director.csv', encoding='utf-8',
+                     names=['编号', '名字', '导演', '编剧', '主演一', '主演二', '主演三', '类型', '时长', '年份', '地区', '语言', '分数'])
+    change_screenplayer=df1['编剧']
+    df1['编剧'] = change_screenplayer.replace(screenplayer_average_score)
+    change_screenplayer = df1['编剧']
+    print(change_screenplayer)
+    df1.to_csv("D:\pythonPractise\douban_spider_keshe\data_analyze\change_CSV\change_screenplayer.csv")  # 现存入一个CSV
+change_screenplayer()
 # print(screenplayer_average_score)  #这个是字典
 
 #############################################存入数据库
 
-conn = pymysql.connect("localhost", "root", "root", "doubanmovie")
-cursor = conn.cursor()
-for i in range(len(screenplayer_list)):
-    # sql_insert1 = "insert into screenplayer_score(screenplayer)values(%s)" % (screenplayer_list2[i])
-    sql_insert = "insert into screenplayer_score(screenplayer,score,movie_number)values('" + screenplayer_list[i] + "','" + str(screenplayer_movie_score[i]) + "','" + str(screenplayer_movie_number[i]) + "')"
-    print(sql_insert)
-    try:
-        # 执行sql语句
-        cursor.execute(sql_insert)
-        # 提交到数据库执行
-        print('插入')
-        conn.commit()
-    except:
-        continue
-        # 发生错误时回滚
-        # conn.rollback()
-
-cursor.close()
-conn.close()
+# conn = pymysql.connect("localhost", "root", "root", "doubanmovie")
+# cursor = conn.cursor()
+# for i in range(len(screenplayer_list)):
+#     # sql_insert1 = "insert into screenplayer_score(screenplayer)values(%s)" % (screenplayer_list2[i])
+#     sql_insert = "insert into screenplayer_score(screenplayer,score,movie_number)values('" + screenplayer_list[i] + "','" + str(screenplayer_movie_score[i]) + "','" + str(screenplayer_movie_number[i]) + "')"
+#     print(sql_insert)
+#     try:
+#         # 执行sql语句
+#         cursor.execute(sql_insert)
+#         # 提交到数据库执行
+#         print('插入')
+#         conn.commit()
+#     except:
+#         continue
+#         # 发生错误时回滚
+#         # conn.rollback()
+#
+# cursor.close()
+# conn.close()
