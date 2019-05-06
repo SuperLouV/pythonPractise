@@ -44,7 +44,7 @@ for year in year_list:
     print(number)
 print(year_movie_score)    #电影平均分的列表
 print(year_movie_number) #年份的电影部数
-# year_average_score=dict(zip(year_list2,year_movie_score))          #组成国家：分数的字典
+year_average_score=dict(zip(year_list,year_movie_score))          #组成国家：分数的字典
 
 # print(year_average_score)  #这个是字典
 
