@@ -1,4 +1,4 @@
-
+#从change_time表中获取数据操作，将时间分段操作
 #5.3数据存入数据库time_score表
 import csv
 import matplotlib
@@ -152,23 +152,23 @@ df.to_csv("D:\pythonPractise\douban_spider_keshe\data_analyze\change_CSV\change_
 
 #############################################存入数据库
 
-conn = pymysql.connect("localhost", "root", "root", "doubanmovie")
-cursor = conn.cursor()
-for i in range(len(time_movie_number)):
-    # sql_insert1 = "insert into time_score(time)values(%s)" % (time_list2[i])
-    sql_insert = "insert into time_score(time,score,movie_number)values('" + time_divided[i]+ "'," + str(time_movie_score[i]) + "," + str(time_movie_number[i]) + ")"
-    # sql_insert = 'select * from time_score'
-    print(sql_insert)
-    try:
-        # 执行sql语句
-        cursor.execute(sql_insert)
-        # 提交到数据库执行
-        print('插入')
-        conn.commit()
-    except:
-        continue
-        # 发生错误时回滚
-        # conn.rollback()
-
-cursor.close()
-conn.close()
+# conn = pymysql.connect("localhost", "root", "root", "doubanmovie")
+# cursor = conn.cursor()
+# for i in range(len(time_movie_number)):
+#     # sql_insert1 = "insert into time_score(time)values(%s)" % (time_list2[i])
+#     sql_insert = "insert into time_score(time,score,movie_number)values('" + time_divided[i]+ "'," + str(time_movie_score[i]) + "," + str(time_movie_number[i]) + ")"
+#     # sql_insert = 'select * from time_score'
+#     print(sql_insert)
+#     try:
+#         # 执行sql语句
+#         cursor.execute(sql_insert)
+#         # 提交到数据库执行
+#         print('插入')
+#         conn.commit()
+#     except:
+#         continue
+#         # 发生错误时回滚
+#         # conn.rollback()
+#
+# cursor.close()
+# conn.close()

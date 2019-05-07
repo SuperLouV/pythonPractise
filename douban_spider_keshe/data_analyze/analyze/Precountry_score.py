@@ -68,25 +68,28 @@ for country in country_list2:
 
 country_average_score=dict(zip(country_list2,country_movie_score))          #组成国家：分数的字典
 print(country_movie_score)            #电影平均分的列表
+print(country_average_score)  #这个是字典
 
-# for i in range(len(country_list2)):
-#     print(i)
-#     print(country_movie_score[i])
-#     print(str(country_movie_score[i]))
-#     print(type(country_movie_score[i]))
-# print(country_average_score)  #这个是字典
-
+def change_country():
+    df1 = pd.read_csv(r'D:\pythonPractise\douban_spider_keshe\data_analyze\change_CSV\change_country1.csv', encoding='utf-8',
+                     names=['编号', '名字', '导演', '编剧', '主演一', '主演二', '主演三', '类型', '时长', '年份', '地区', '语言', '分数'])
+    change_country=df1['地区']
+    df1['地区'] = change_country.replace(country_average_score)
+    change_country = df1['地区']
+    print(change_country)
+    df1.to_csv("D:\pythonPractise\douban_spider_keshe\data_analyze\change_CSV\change_country2.csv")  # 现存入一个CSV
+change_country()
 #############################################存入数据库
 
-conn = pymysql.connect("localhost", "root", "root", "doubanmovie")
-cursor = conn.cursor()
-
-for i in range(len(country_list2)):
-    # sql_insert1 = "insert into country_score(country)values(%s)" % (country_list2[i])
-    sql_insert = "insert into country_score(country,score)values('" + country_list2[i] + "','" + str(country_movie_score[i]) + "')"
-    cursor.execute(sql_insert)
-    print(sql_insert)
-    print('插入')
-    conn.commit()
-cursor.close()
-conn.close()
+# conn = pymysql.connect("localhost", "root", "root", "doubanmovie")
+# cursor = conn.cursor()
+#
+# for i in range(len(country_list2)):
+#     # sql_insert1 = "insert into country_score(country)values(%s)" % (country_list2[i])
+#     sql_insert = "insert into country_score(country,score)values('" + country_list2[i] + "','" + str(country_movie_score[i]) + "')"
+#     cursor.execute(sql_insert)
+#     print(sql_insert)
+#     print('插入')
+#     conn.commit()
+# cursor.close()
+# conn.close()
