@@ -67,16 +67,18 @@ country_number=dict(zip(country_list2,country_movie_number))          #组成国
 
 
 ##########################################
-conn = pymysql.connect("localhost", "root", "root", "doubanmovie")
-cursor = conn.cursor()
+def con_mysql():
+    conn = pymysql.connect("localhost", "root", "root", "doubanmovie")
+    cursor = conn.cursor()
 
-for i in range(len(country_list2)):
-    sql_insert1 = "insert into country_number(country)values(%s)" % (country_list2[i])
-    sql_insert = "insert into country_number(country,number)values('" + country_list2[i] + "','" + str(country_movie_number[i]) + "')"
-    cursor.execute(sql_insert)
-    print(sql_insert)
-    print('插入')
-    conn.commit()
-cursor.close()
-conn.close()
+    for i in range(len(country_list2)):
+        sql_insert1 = "insert into country_number(country)values(%s)" % (country_list2[i])
+        sql_insert = "insert into country_number(country,number)values('" + country_list2[i] + "','" + str(
+            country_movie_number[i]) + "')"
+        cursor.execute(sql_insert)
+        print(sql_insert)
+        print('插入')
+        conn.commit()
+    cursor.close()
+    conn.close()
 

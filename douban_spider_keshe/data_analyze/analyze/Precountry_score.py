@@ -46,7 +46,7 @@ print("全部国家",country_list2)                 #输出全部国家在一个
 print(len(country_list2))         #国家数量，但是包含了重复名称
 
 country_movie_score = []
-
+country_movie_number = []
 #计算每个国家平均分
 def averagenum(num):
     nsum = 0
@@ -61,9 +61,11 @@ for country in country_list2:
     df_area = df[df['地区'].str.contains(country)]   #只要国家名称中包含‘地区’就算进数量。如‘美国 ’，‘ 美国’均为‘美国’
     print(df_area)      #每个国家对应的电影信息
     score=df_area['分数'].tolist()
+    number=len(score)
     print(score)
     print(averagenum(score))
     country_movie_score.append(averagenum(score))#平均分列表
+    country_movie_number.append(number)#电影数量
 
 
 country_average_score=dict(zip(country_list2,country_movie_score))          #组成国家：分数的字典
@@ -78,18 +80,20 @@ def change_country():
     change_country = df1['地区']
     print(change_country)
     df1.to_csv("D:\pythonPractise\douban_spider_keshe\data_analyze\change_CSV\change_country2.csv")  # 现存入一个CSV
-change_country()
+# change_country()
 #############################################存入数据库
 
-# conn = pymysql.connect("localhost", "root", "root", "doubanmovie")
-# cursor = conn.cursor()
-#
-# for i in range(len(country_list2)):
-#     # sql_insert1 = "insert into country_score(country)values(%s)" % (country_list2[i])
-#     sql_insert = "insert into country_score(country,score)values('" + country_list2[i] + "','" + str(country_movie_score[i]) + "')"
-#     cursor.execute(sql_insert)
-#     print(sql_insert)
-#     print('插入')
-#     conn.commit()
-# cursor.close()
-# conn.close()
+def con_mysql():
+    conn = pymysql.connect("localhost", "root", "root", "doubanmovie")
+    cursor = conn.cursor()
+
+    for i in range(len(country_list2)):
+        # sql_insert1 = "insert into country_score(country)values(%s)" % (country_list2[i])
+        sql_insert = "insert into country_scores(country,score,number)values('" + country_list2[i] + "','" + str(
+            country_movie_score[i]) + "','" + str(country_movie_number[i]) + "')"
+        cursor.execute(sql_insert)
+        print(sql_insert)
+        print('插入')
+        conn.commit()
+    cursor.close()
+    conn.close()

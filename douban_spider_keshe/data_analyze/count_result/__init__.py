@@ -5,7 +5,7 @@ from sklearn.linear_model import LinearRegression  #线性回归
 from sklearn import metrics
 import numpy as np
 import matplotlib.pyplot as plt
-df=pd.read_csv(r'D:\pythonPractise\douban_spider_keshe\data_analyze\change_CSV\final_test.csv',encoding='utf-8',names=['导演','编剧','主演一','主演二','主演三','类型','时长','地区','分数'])
+df=pd.read_csv(r'D:\pythonPractise\douban_spider_keshe\data_analyze\change_CSV\final.csv',encoding='utf-8',names=['导演','编剧','主演一','主演二','主演三','类型','时长','地区','分数'])
 pd.set_option('display.max_rows',None)    #把数据全部行展示出来
 print(df.head())
 print(df.shape)  #数据的维度
@@ -30,3 +30,4 @@ linreg = LinearRegression()
 linreg.fit(X_train, y_train)
 print (linreg.intercept_)
 print (linreg.coef_)
+print('y=0.1429074a+0.36510676b+0.36510676c+0.23537985d+0.30375269e+0.10476197f+0.05599598g+-0.11444683h-1.53791708')
